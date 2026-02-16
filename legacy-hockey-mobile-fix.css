@@ -1,77 +1,121 @@
 /* 
- * Legacy.Hockey Mobile Game Page Fix - Updated with correct class names
+ * Legacy.Hockey Mobile Game Page Fix - Version 3 (More Aggressive)
  * Prevents date/location overlap with line score team names
  */
 
-/* Target mobile devices */
-@media (max-width: 768px) {
+/* Target mobile devices with more specific and aggressive rules */
+@media screen and (max-width: 768px) {
   
-  /* Fix the game info bar layout to prevent overlap */
-  .game_info_bar_v2 {
-    display: block !important;
-    margin-bottom: 20px !important;
-    padding-bottom: 10px !important;
+  /* Very specific targeting of game info bar */
+  body .game_info_bar_v2,
+  body div.game_info_bar_v2 {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 30px !important;
+    padding-bottom: 20px !important;
     overflow: visible !important;
     height: auto !important;
-    min-height: 0 !important;
+    min-height: auto !important;
+    max-height: none !important;
   }
   
-  /* Date element - ensure it doesn't float */
-  .game_info_bar_v2 .date {
+  /* Force date to be on its own line */
+  body .game_info_bar_v2 .date,
+  body div.game_info_bar_v2 div.date,
+  body .game_info_bar_v2 > .date {
     display: block !important;
+    width: 100% !important;
     float: none !important;
     clear: both !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 10px !important;
     position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
   }
   
-  /* Location element - allow wrapping and add spacing */
-  .game_info_bar_v2 .location {
+  /* Force location to be on its own line and wrap properly */
+  body .game_info_bar_v2 .location,
+  body div.game_info_bar_v2 div.location,
+  body .game_info_bar_v2 > .location {
     display: block !important;
+    width: 100% !important;
     float: none !important;
     clear: both !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     white-space: normal !important;
     max-width: 100% !important;
-    line-height: 1.4 !important;
-    margin-bottom: 10px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 15px !important;
     position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
   }
   
-  /* Ensure line score table has proper spacing from game info */
-  table[id^="lineScore"] {
-    margin-top: 20px !important;
+  /* Location link specifically */
+  body .game_info_bar_v2 .location a,
+  body .game_info_bar_v2 .location > a {
+    display: inline !important;
+    word-wrap: break-word !important;
+    white-space: normal !important;
+  }
+  
+  /* Ensure massive spacing before line score table */
+  body table[id*="lineScore"],
+  body div[id*="lineScore"],
+  body #lineScore-team-10248298,
+  table.line-score {
+    margin-top: 30px !important;
     clear: both !important;
-  }
-  
-  /* Specific fix for team rows in line score */
-  .team {
     position: relative !important;
     z-index: 1 !important;
   }
   
-  /* Additional spacing for very long location names */
-  .game_info_bar_v2 .location a {
-    display: inline !important;
-    word-wrap: break-word !important;
+  /* Protect team names from overlap */
+  body .team,
+  body td.team,
+  body div.team {
+    position: relative !important;
+    z-index: 10 !important;
+    background-color: white !important;
+  }
+  
+  /* Add buffer space after game_info_bar_v2 */
+  body .game_info_bar_v2::after {
+    content: "" !important;
+    display: block !important;
+    height: 20px !important;
+    clear: both !important;
   }
 }
 
-/* Extra fixes for very small screens (phones in portrait) */
-@media (max-width: 480px) {
+/* Even more aggressive for small phones */
+@media screen and (max-width: 480px) {
   
-  .game_info_bar_v2 {
-    margin-bottom: 25px !important;
-    padding-bottom: 15px !important;
+  body .game_info_bar_v2 {
+    margin-bottom: 40px !important;
+    padding-bottom: 25px !important;
   }
   
-  .game_info_bar_v2 .location {
-    font-size: 0.9em !important;
-    margin-bottom: 15px !important;
+  body .game_info_bar_v2 .location {
+    font-size: 14px !important;
+    margin-bottom: 20px !important;
   }
   
-  table[id^="lineScore"] {
-    margin-top: 25px !important;
+  body table[id*="lineScore"] {
+    margin-top: 40px !important;
   }
 }
+
+/* Nuclear option - if all else fails, hide the location on mobile */
+/* Uncomment these lines if the above still doesn't work:
+
+@media screen and (max-width: 768px) {
+  body .game_info_bar_v2 .location {
+    display: none !important;
+  }
+}
+
+*/
