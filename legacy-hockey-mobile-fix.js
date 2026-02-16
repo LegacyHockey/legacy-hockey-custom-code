@@ -9,7 +9,7 @@
     @media screen and (max-width: 768px) {
       /* Push the game info bar down with top spacing */
       body .game_info_bar_v2 {
-        margin-top: 160px !important;
+        margin-top: 60px !important;
         padding-top: 20px !important;
         position: relative !important;
         clear: both !important;
