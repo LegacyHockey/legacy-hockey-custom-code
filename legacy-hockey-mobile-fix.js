@@ -6,50 +6,29 @@
   
   // CSS code
   var css = `
-    /* TEST - Blue background to confirm new version is loading */
+    /* TEST - Green background to confirm version is loading */
     body ul.game_info_bar_v2 {
-      background-color: lightblue !important;
-      border: 3px solid blue !important;
+      background-color: lightgreen !important;
+      border: 3px solid green !important;
     }
     
     @media screen and (max-width: 768px) {
-      /* Remove any positioning that's pulling it up */
+      /* Push game info bar down with massive top spacing */
       body ul.game_info_bar_v2 {
-        position: static !important;
+        position: relative !important;
         top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-        margin-top: 20px !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin-top: 150px !important;
         margin-bottom: 20px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
         padding: 15px 10px !important;
         float: none !important;
         clear: both !important;
         width: auto !important;
+        z-index: 1 !important;
       }
       
-      /* Ensure it appears after the table */
-      body #GameShowScoreboardSimple {
-        display: flex !important;
-        flex-direction: column !important;
-      }
-      
-      body #GameShowScoreboardSimple > ul.game_info_bar_v2 {
-        order: 999 !important;
-      }
-      
-      body #GameShowScoreboardSimple > .game-header {
-        order: 1 !important;
-      }
-      
-      body #GameShowScoreboardSimple > table {
-        order: 2 !important;
-      }
-      
-      /* Format location properly */
+      /* Format location to wrap properly */
       body ul.game_info_bar_v2 li.location {
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
@@ -66,6 +45,7 @@
     
     @media screen and (max-width: 480px) {
       body ul.game_info_bar_v2 {
+        margin-top: 180px !important;
         padding: 20px 10px !important;
       }
       
