@@ -7,13 +7,21 @@
   // CSS code
   var css = `
     @media screen and (max-width: 768px) {
-      /* Keep date and location in their original position but prevent overlap */
-      body .game_info_bar_v2 .date {
+      /* Push the game info bar down with top spacing */
+      body .game_info_bar_v2 {
+        margin-top: 60px !important;
+        padding-top: 20px !important;
         position: relative !important;
-        z-index: 1 !important;
-        background-color: transparent !important;
+        clear: both !important;
       }
       
+      /* Ensure date wraps properly */
+      body .game_info_bar_v2 .date {
+        display: block !important;
+        margin-bottom: 8px !important;
+      }
+      
+      /* Ensure location wraps properly */
       body .game_info_bar_v2 .location {
         display: block !important;
         word-wrap: break-word !important;
@@ -21,38 +29,18 @@
         white-space: normal !important;
         max-width: 100% !important;
         line-height: 1.4 !important;
-        position: relative !important;
-        z-index: 1 !important;
-        background-color: transparent !important;
       }
       
       body .game_info_bar_v2 .location a {
         word-wrap: break-word !important;
         white-space: normal !important;
       }
-      
-      /* Add spacing below the game info bar to prevent overlap with line score */
-      body .game_info_bar_v2 {
-        margin-bottom: 15px !important;
-        padding-bottom: 10px !important;
-      }
-      
-      /* Ensure line score table starts below the game info */
-      body table[id*="lineScore"] {
-        margin-top: 15px !important;
-        clear: both !important;
-      }
-      
-      /* Protect team names in line score */
-      body table[id*="lineScore"] .team {
-        position: relative !important;
-        z-index: 2 !important;
-      }
     }
     
     @media screen and (max-width: 480px) {
       body .game_info_bar_v2 {
-        margin-bottom: 20px !important;
+        margin-top: 80px !important;
+        padding-top: 25px !important;
       }
       
       body .game_info_bar_v2 .location {
