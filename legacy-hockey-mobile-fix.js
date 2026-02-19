@@ -7,7 +7,10 @@
   // CSS code
   var css = `
     /* TEST - Blue background to confirm new version is loading */
-   
+    body ul.game_info_bar_v2 {
+      background-color: lightblue !important;
+      border: 3px solid blue !important;
+    }
     
     @media screen and (max-width: 768px) {
       /* Remove any positioning that's pulling it up */
@@ -34,16 +37,27 @@
         flex-direction: column !important;
       }
       
-      body #GameShowScoreboardSimple > ul.game_info_bar_v2 {
-        order: 999 !important;
-      }
-      
+      /* Game header with logos and center date/time should be first */
       body #GameShowScoreboardSimple > .game-header {
         order: 1 !important;
       }
       
+      /* Make sure the datetime in game-header-center stays visible */
+      body .game-header-center,
+      body .game-header-center .datetime {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      /* Line score table should be second */
       body #GameShowScoreboardSimple > table {
         order: 2 !important;
+      }
+      
+      /* Game info bar (with location) should be last */
+      body #GameShowScoreboardSimple > ul.game_info_bar_v2 {
+        order: 999 !important;
       }
       
       /* Format location properly */
