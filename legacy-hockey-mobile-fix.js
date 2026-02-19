@@ -7,10 +7,7 @@
   // CSS code
   var css = `
     /* TEST - Blue background to confirm new version is loading */
-    body ul.game_info_bar_v2 {
-      background-color: lightblue !important;
-      border: 3px solid blue !important;
-    }
+   
     
     @media screen and (max-width: 768px) {
       /* Remove any positioning that's pulling it up */
